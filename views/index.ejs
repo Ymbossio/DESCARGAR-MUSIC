@@ -9,25 +9,24 @@
 </head>
 <body>
     <div class="top-container">
-        <form action="convert-mp3" method="post" id="form">
+        <form action="/convert-mp3" method="post" id="form">
             <h1>Convertidor MP3 Converter</h1>
-            <h4>Ingrese el ID del video</h4>
-
             <div>
-                <input type="text" name="VideoID" placeholder="Video ID">
+                <input type="text" name="VideoID" placeholder="Ingrese el ID del video">
                 <button>Convertir</button>
             </div>
         </form>
     </div>
 
     <div class="bottom-container">
-        <% if(typeof success != "undefined") { %>
+        <% if(typeof success != "undefined" && success) { %>
             <div class="success">
-                <p> <%= song_title %> <button id="download-btn">Descargar</button></p>
+                <p> <%= song_title %></p>
+                <a href="<%= song_link %>"><button id="download-btn">Descargar</button></a>
             </div>
         <%} else if(typeof success != "undefined" && !success) {%>
             <div class="errors">
-                <p><% message %></p>
+                <p><%= message %></p>
             </div>
         <%} %>
     </div>
